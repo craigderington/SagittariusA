@@ -1,0 +1,17 @@
+{% block content %}
+
+<h3>List of Stars</h3>
+<ul>
+  {% for star in object_list %}
+    <li><a href="{% url 'stars:detail' star.pk %}">{{ star.proper_name }}</a>
+        <small>
+          &nbsp;&nbsp;&nbsp;<a href="{% url 'stars:update' star.pk %}">(update)</a>
+        </small>
+    </li>
+  {% empty %}
+    No stars in database.
+  {% endfor %}
+</ul>
+
+
+{% endblock %}
