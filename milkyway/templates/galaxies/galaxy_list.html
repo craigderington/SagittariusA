@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 class="page-header">Galaxies</h1>
+
+  {% if user.is_authenticated %}
+  <a href="{% url 'stars:galaxy-add' %}" class="btn btn-small btn-default pull-right">
+    <i class="glyphicon glyphicon-asterisk"></i> Add Galaxy
+  </a>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <th>Galaxy</th>
+      <th>Constellation</th>
+      <th>Distance</th>
+      <th>Actions</th>
+    </thead>
+    <tbody>
+      {% for galaxy in object_list %}
+        <tr>
+          <td><a href="{% url 'stars:galaxy-detail' galaxy.pk %}">{{ galaxy.galaxy_name }}</a></td>
+          <td>{{ galaxy.constellation }}</td>
+          <td>{{ galaxy.distance }} ly</td>
+          <td>
+            <a href="{% url 'stars:galaxy-update' galaxy.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+          </td>
+      {% empty %}
+        <tr>
+          <td colspan="5">No galaxies in database.</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"><small>{{ galaxy_count }} galaxies found in the database...</small></td>
+      </tr>
+    </tfoot>
+  </table>
+{% endblock content %}

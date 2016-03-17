@@ -15,13 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from stars.views import index
+from .views import index
 
 urlpatterns = [
+    url(r'^$', index, name='index'),
     url(r'^admin/', admin.site.urls),
     url(r'^stars/', include('stars.urls', namespace='stars')),
-    url(r'^$', index, name='index'),
-    #url(r'^galaxies/', include('stars.urls', namespace='galaxy')),
-    #url(r'^stellar_objects/', include('stars.urls', namespace='stellar')),
-    #url(r'^constellations/', include('stars.urls', namespace='constellation')),
+    url(r'^galaxies/', include('galaxies.urls', namespace='galaxy')),
+    url(r'^stellar_objects/', include('stellar_objects.urls', namespace='stellar')),
+    url(r'^constellations/', include('constellations.urls', namespace='constellation')),
 ]
