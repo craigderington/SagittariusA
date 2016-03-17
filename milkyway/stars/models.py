@@ -9,7 +9,7 @@ class Galaxy(TimeStampedModel):
     galaxy_name = models.CharField(max_length=50, null=False, blank=False)
     constellation = models.ForeignKey('Constellation')
     notes = models.TextField(default=None)
-    distance = models.PositiveIntegerField(null=False, blank=False)
+    distance = models.DecimalField(max_digits=6, decimal_places=3, null=False, blank=False)
 
     class Meta:
         verbose_name = 'Galaxy'
@@ -45,6 +45,7 @@ class Star(TimeStampedModel):
     proper_name = models.CharField(max_length=50, null=False, blank=False)
     distance = models.DecimalField(max_digits=8, decimal_places=5, null=False, blank=False)
     spectral_class = models.CharField(max_length=50, null=False, blank=False)
+    constellation_name = models.ForeignKey('Constellation', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Star'

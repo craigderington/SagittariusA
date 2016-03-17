@@ -1,17 +1,48 @@
+{% extends 'base.html' %}
+
+
+
 {% block content %}
+<h1 class="page-header">Stars</h1>
 
-<h3>List of Stars</h3>
-<ul>
-  {% for star in object_list %}
-    <li><a href="{% url 'stars:detail' star.pk %}">{{ star.proper_name }}</a>
-        <small>
-          &nbsp;&nbsp;&nbsp;<a href="{% url 'stars:update' star.pk %}">(update)</a>
-        </small>
-    </li>
-  {% empty %}
-    No stars in database.
-  {% endfor %}
-</ul>
+  {% if user.is_authenticated %}
+  <a href="{% url 'stars:star-add' %}" class="btn btn-xs btn-default pull-right">
+    <i class="glyphicon glyphicon-star"></i> Add Star
+  </a>
+  {% endif %}
 
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Star Name</th>
+        <th>Constellation</th>
+        <th>Spectral Class</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for star in object_list %}
+      <tr>
+        <td><a href="{% url 'stars:detail' star.pk %}">{{ star.proper_name }}</a></td>
+        <td>{{ star.constellation_name }}</td>
+        <td>{{ star.spectral_class }}</td>
+        <td>
+            <a href="{% url 'stars:detail' star.pk %}"><i class="glyphicon glyphicon-check"></i></a>&nbsp;
+            <a href="{% url 'stars:update' star.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+            <a href="{% url 'stars:star-delete' star.pk %}"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="4">No stars in database.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4">&nbsp;</td>
+      </tr>
+    </tfoot>
+  </table>
 
-{% endblock %}
+{% endblock content %}

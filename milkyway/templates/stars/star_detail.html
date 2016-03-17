@@ -1,10 +1,22 @@
+{% extends 'base.html' %}
+
+
 {% block content %}
 
 
-  <h3>Star: {{ object.proper_name }}</h3>
-  <p>Bayer Designation: {{ object.bayer_designation }}</p>
-  <p>Distance: {{ object.distance }} ly</p>
-  <p>Spectral Class: {{ object.spectral_class }}</p>
+  <h1 class="cover-heading">Star: {{ object.proper_name }}</h3>
+  <p class="lead">Bayer Designation: {{ object.bayer_designation }}</p>
+  <p class="lead">Distance: {{ object.distance }} ly</p>
+  <p class="lead">Spectral Class: {{ object.spectral_class }}</p>
 
+  <p>&nbsp;</p>
 
-{% endblock %}
+  <p>
+    {% if user.is_authenticated %}
+      <a href="{% url 'stars:update' star.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+      <a href="{% url 'stars:star-delete' star.pk %}" class="btn btn-danger btn-small"><i class="glyphicon glyphicon-remove"></i> Delete</a>
+    {% endif %}
+    <a href="{% url 'stars:list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
+  </p>
+
+{% endblock content %}
