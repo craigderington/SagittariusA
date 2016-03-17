@@ -22,7 +22,7 @@
         <tr>
           <td><a href="{% url 'stars:galaxy-detail' galaxy.pk %}">{{ galaxy.galaxy_name }}</a></td>
           <td>{{ galaxy.constellation }}</td>
-          <td>{{ galaxy.distance }} ly</td>          
+          <td>{{ galaxy.distance }} ly</td>
           <td>
             <a href="{% url 'stars:galaxy-update' galaxy.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
           </td>
@@ -34,7 +34,7 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="5">TODO:  (x) number of objects found...</td>
+        <td colspan="5"><small>{{ galaxy_count }} galaxies found in the database...</small></td>
       </tr>
     </tfoot>
   </table>

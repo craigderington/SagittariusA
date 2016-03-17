@@ -22,7 +22,8 @@ class StarForm(forms.ModelForm):
     class Meta:
         model = Star
         fields = ('proper_name', 'distance', 'bayer_designation',
-                  'spectral_class', 'magnitude', 'constellation_name')
+                  'spectral_class', 'magnitude', 'constellation_name',
+                  'evolution_stage',)
 
     def form_valid(self, form):
         success_url = '/stars/'

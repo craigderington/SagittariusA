@@ -6,8 +6,8 @@
 <h1 class="page-header">Stars</h1>
 
   {% if user.is_authenticated %}
-  <a href="{% url 'stars:star-add' %}" class="btn btn-xs btn-default pull-right">
-    <i class="glyphicon glyphicon-star"></i> Add Star
+  <a href="{% url 'stars:star-add' %}" class="btn btn-small btn-default pull-right">
+    <i class="glyphicon glyphicon-asterisk"></i> Add Star
   </a>
   {% endif %}
 
@@ -17,6 +17,7 @@
         <th>Star Name</th>
         <th>Constellation</th>
         <th>Spectral Class</th>
+        <th>Evolutionary Stage</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -26,6 +27,7 @@
         <td><a href="{% url 'stars:detail' star.pk %}">{{ star.proper_name }}</a></td>
         <td>{{ star.constellation_name }}</td>
         <td>{{ star.spectral_class }}</td>
+        <td>{{ star.evolution_stage }}</td>
         <td>
             <a href="{% url 'stars:detail' star.pk %}"><i class="glyphicon glyphicon-check"></i></a>&nbsp;
             <a href="{% url 'stars:update' star.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
@@ -40,9 +42,32 @@
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="4">&nbsp;</td>
+        <td colspan="4"><small>{{ star_count }} records found in the database...</small></td>
       </tr>
     </tfoot>
   </table>
+
+  <!-- pagination -->
+  {% if is_paginated %}
+    <div>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><a href="#">&laquo;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+
+            <li style="margin-left:15px;vertical-align:middle;"><small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small></li>
+        </ul>
+    </div>
+  {% endif %}
+  <!-- / end pagination -->
+
+
+
 
 {% endblock content %}

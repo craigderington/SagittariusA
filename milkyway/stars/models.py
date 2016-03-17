@@ -40,12 +40,13 @@ class Constellation(TimeStampedModel):
 
 
 class Star(TimeStampedModel):
-    magnitude = models.DecimalField(max_digits=5, decimal_places=2)
+    magnitude = models.DecimalField(max_digits=8, decimal_places=3)
     bayer_designation = models.CharField(max_length=50, null=False, blank=False)
     proper_name = models.CharField(max_length=50, null=False, blank=False)
     distance = models.DecimalField(max_digits=8, decimal_places=5, null=False, blank=False)
     spectral_class = models.CharField(max_length=50, null=False, blank=False)
     constellation_name = models.ForeignKey('Constellation', null=True, blank=True)
+    evolution_stage = models.CharField(max_length=50, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Star'
