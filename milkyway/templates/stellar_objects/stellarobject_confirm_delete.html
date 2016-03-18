@@ -4,18 +4,16 @@
 
 
 {% block content %}
-<h3 class="page-header">{{ galaxy.galaxy_name }}</h3>
+<h3 class="page-header">{{ object.name }}</h3>
 
 <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Warning!</strong> You are about to delete database record <strong>{{ galaxy.galaxy_name }}</strong>!  This action can not be undone...
+  <strong>Warning!</strong> You are about to delete database record <strong>{{ object.name }}</strong>!  This action can not be undone...
 </div>
 
-
-
-<p>Constellation: {{ galaxy.constellation }}</p>
-<p>Distance: {{ galaxy.distance }} ly</p>
-
+<p>Object Type: {{ object.stellar_object_type }}</p>
+<p>Distance: {{ object.distance }} ly</p>
+<p>Constellation: {{ object.constellation }}</p>
 <p>&nbsp;</p>
 <p>Are you absolutely sure you want to delete this record?</p>
 

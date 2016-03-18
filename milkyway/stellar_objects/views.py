@@ -38,7 +38,7 @@ class StellarObjectUpdateView(generic.UpdateView):
     form_class = StellarObjectForm
 
     def get_success_url(self):
-        return reverse_lazy('stellar:detail', args= (self.object.id,))
+        return reverse_lazy('stellar:stellar-detail', args= (self.object.id,))
 
 
 class StellarObjectCreateView(generic.CreateView):
@@ -56,4 +56,4 @@ class StellarObjectCreateView(generic.CreateView):
 
 class StellarObjectDeleteView(generic.DeleteView):
     model = StellarObject
-    success_url = reverse_lazy('stellar-list')
+    success_url = reverse_lazy('stellar:stellar-list')

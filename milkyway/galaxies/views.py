@@ -12,7 +12,7 @@ from .forms import GalaxyForm
 
 class GalaxyListView(generic.ListView):
     model = Galaxy
-    template_name = 'stars/galaxy_list.html'
+    template_name = 'galaxies/galaxy_list.html'
 
     def get_context_data(self, **kwargs):
         context = super(GalaxyListView, self).get_context_data(**kwargs)
@@ -23,7 +23,7 @@ class GalaxyListView(generic.ListView):
 
 class GalaxyDetailView(generic.DetailView):
     model = Galaxy
-    template_name = 'stars/galaxy_detail.html'
+    template_name = 'galaxies/galaxy_detail.html'
 
     def get_context_data(self, **kwargs):
         context = super(GalaxyDetailView, self).get_context_data(**kwargs)
@@ -34,8 +34,8 @@ class GalaxyDetailView(generic.DetailView):
 class GalaxyCreateView(generic.CreateView):
     model = Galaxy
     form_class = GalaxyForm
-    success_url = 'stars/galaxies/'
-    template_name = 'stars/galaxy_form.html'
+    success_url = '/galaxies/'
+    template_name = 'galaxies/galaxy_form.html'
 
     def form_valid(self, form):
         form.instance.created_by = self.request.user
@@ -50,9 +50,9 @@ class GalaxyUpdateView(generic.UpdateView):
     form_class = GalaxyForm
 
     def get_success_url(self):
-        return reverse_lazy('stars:galaxy-detail', args= (self.object.id,))
+        return reverse_lazy('galaxy:galaxy-detail', args= (self.object.id,))
 
 
 class GalaxyDeleteView(generic.DeleteView):
     model = Galaxy
-    success_url = reverse_lazy('stars:galaxy-list')
+    success_url = reverse_lazy('galaxy:galaxy-list')

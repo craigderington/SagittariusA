@@ -24,7 +24,7 @@
     <tbody>
       {% for stellar in object_list %}
       <tr>
-        <td><a href="{% url 'stellar:stellar-detail' %}">{{ stellar.name }}</a></td>
+        <td><a href="{% url 'stellar:stellar-detail' stellar.pk %}">{{ stellar.name }}</a></td>
         <td>{{ stellar.stellar_object_type }}</td>
         <td>{{ stellar.constellation }}</td>
         <td>{{ stellar.distance }}</td>

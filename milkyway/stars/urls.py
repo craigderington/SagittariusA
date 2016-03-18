@@ -11,22 +11,22 @@ urlpatterns = [
         name='star-list'
     ),
     url(
-        regex=r'^star/(?P<pk>\d+)/$',
+        regex=r'^(?P<pk>\d+)/$',
         view=views.StarDetailView.as_view(),
         name='star-detail'
     ),
     url(
-        regex=r'^star/(?P<pk>\d+)/update/$',
+        regex=r'^(?P<pk>\d+)/update/$',
         view=views.StarUpdateView.as_view(),
         name='star-update'
     ),
     url(
-        regex=r'^star/add/$',
+        regex=r'^add/$',
         view=views.StarCreateView.as_view(),
         name='star-add'
     ),
     url(
-        regex=r'^star/(?P<pk>[0-9]+)/delete/$',
+        regex=r'^(?P<pk>[0-9]+)/delete/$',
         view=views.StarDeleteView.as_view(),
         name='star-delete'
     ),

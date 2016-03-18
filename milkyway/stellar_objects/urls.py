@@ -9,22 +9,22 @@ urlpatterns = [
         name='stellar-list'
     ),
     url(
-        regex=r'^stellar_objects/add/',
+        regex=r'^add/',
         view=views.StellarObjectCreateView.as_view(),
         name='stellar-add'
     ),
     url(
-        regex=r'^stellar_objects/(?P<pk>[0-9]+)/$',
+        regex=r'^(?P<pk>[0-9]+)/$',
         view=views.StellarObjectDetailView.as_view(),
         name='stellar-detail'
     ),
     url(
-        regex=r'^stellar_objects/(?P<pk>[0-9]+)/update/$',
+        regex=r'^(?P<pk>[0-9]+)/update/$',
         view=views.StellarObjectUpdateView.as_view(),
         name='stellar-update'
     ),
     url(
-        regex=r'^stellar_objects/(?P<pk>[0-9]+)/delete/$',
+        regex=r'^(?P<pk>[0-9]+)/delete/$',
         view=views.StellarObjectDeleteView.as_view(),
         name='stellar-delete'
     ),
