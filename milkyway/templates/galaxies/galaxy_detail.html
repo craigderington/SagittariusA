@@ -13,10 +13,10 @@
 
   <p>
     {% if user.is_authenticated %}
-    <a href="{% url 'stars:galaxy-update' galaxy.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-    <a href="{% url 'stars:galaxy-delete' galaxy.pk %}" class="btn btn-danger btn-small"><i class="glyphicon glyphicon-remove"></i> Delete</a>
+    <a href="{% url 'galaxy:galaxy-update' galaxy.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+    <a href="{% url 'galaxy:galaxy-delete' galaxy.pk %}" class="btn btn-danger btn-small"><i class="glyphicon glyphicon-remove"></i> Delete</a>
     {% endif %}
-    <a href="{% url 'stars:galaxy-list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
+    <a href="{% url 'galaxy:galaxy-list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
   </p>
 
 {% endblock content %}

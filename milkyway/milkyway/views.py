@@ -1,6 +1,8 @@
 # milkyway/views.py
-from django.shortcuts import render
+
+from django.template.response import TemplateResponse
 
 
 def index(request):
-    render(request, 'templates/index.html', {'foo': 'bar'})
+    response = TemplateResponse(request, 'index.html', {})
+    return response

@@ -46,10 +46,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li {% if nav_star %}class="active"{% endif %}><a href="{% url 'stars:list' %}">Stars</a></li>
-            <li {% if nav_constellation %}class="active"{% endif %}><a href="#">Constellations</a></li>
-            <li {% if nav_galaxy %}class="active"{% endif %}><a href="{% url 'stars:galaxy-list' %}">Galaxies</a></li>
-            <li {% if nav_stellar %}class="active"{% endif %}><a href="">Stellar Objects</a></li>
+            <li {% if nav_star %}class="active"{% endif %}><a href="{% url 'stars:star-list' %}">Stars</a></li>
+            <li {% if nav_constellation %}class="active"{% endif %}><a href="{% url 'constellation:constellation-list' %}">Constellations</a></li>
+            <li {% if nav_galaxy %}class="active"{% endif %}><a href="{% url 'galaxy:galaxy-list' %}">Galaxies</a></li>
+            <li {% if nav_stellar %}class="active"{% endif %}><a href="{% url 'stellar:stellar-list' %}">Stellar Objects</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

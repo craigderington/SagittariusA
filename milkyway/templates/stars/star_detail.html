@@ -15,10 +15,10 @@
 
   <p>
     {% if user.is_authenticated %}
-      <a href="{% url 'stars:update' star.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+      <a href="{% url 'stars:star-update' star.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
       <a href="{% url 'stars:star-delete' star.pk %}" class="btn btn-danger btn-small"><i class="glyphicon glyphicon-remove"></i> Delete</a>
     {% endif %}
-    <a href="{% url 'stars:list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
+    <a href="{% url 'stars:star-list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
   </p>
 
 {% endblock content %}

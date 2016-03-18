@@ -14,10 +14,12 @@ class Star(TimeStampedModel):
     constellation_name = models.ForeignKey('constellations.Constellation', null=True, blank=True)
     evolution_stage = models.CharField(max_length=50, null=True, blank=True)
     star_mass = models.CharField(max_length=50, default=None, null=True, blank=True)
-    star_age = models.DecimalField(max_digits=8, decimal_places=4, null=True, blank=True)
+    star_age = models.DecimalField(max_digits=8, decimal_places=4, null=True, blank=True, default=0)
     surface_temperature = models.CharField(max_length=50, null=True, blank=True)
-    visual_brightness = models.IntegerField(default=None, null=True, blank=True)
+    visual_brightness = models.IntegerField(default=0, null=True, blank=True)
     star_volume = models.CharField(max_length=50, default=None, null=True, blank=True)
+    constellation_name = models.ForeignKey('constellations.constellation',
+                                           null=True, blank=True, default=None)
 
 
     class Meta:

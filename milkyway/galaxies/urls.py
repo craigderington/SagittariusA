@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
 url(
-    regex=r'^galaxies/$',
+    regex=r'^$',
     view=views.GalaxyListView.as_view(),
     name='galaxy-list'
 ),

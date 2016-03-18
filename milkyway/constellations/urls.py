@@ -4,7 +4,7 @@ from . import views
 
 urlpatterns = [
 url(
-    regex=r'^constellations/$',
+    regex=r'^$',
     view=views.ConstellationListView.as_view(),
     name='constellation-list'
 ),

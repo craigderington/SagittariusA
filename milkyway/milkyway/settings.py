@@ -125,7 +125,9 @@ SUIT_CONFIG = {
          {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group',)},
          {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
          {'app': 'stars', 'icon':'icon-asterisk', 'models': ('stars',)},
-         {'app': 'galaxies', 'icon':'icon-download-alt', 'models': ('galaxy',)},
+         {'app': 'galaxies', 'icon':'icon-globe', 'models': ('galaxy',)},
+         {'app': 'constellations', 'icon':'icon-ok-circle', 'models': ('constellations',)},
+         {'app': 'stellar_objects', 'icon':'icon-tasks', 'models': ('stellar_objects',)},
     ),
 
     # misc

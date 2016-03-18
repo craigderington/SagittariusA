@@ -6,10 +6,10 @@ from .models import Star
 
 class StarAdmin(admin.ModelAdmin):
     fields = ('proper_name', 'distance', 'spectral_class', 'magnitude',
-              'bayer_designation', 'evolution_stage')
-    list_display = ('proper_name', 'magnitude', 'distance',
+              'bayer_designation', 'evolution_stage', 'constellation_name',)
+    list_display = ('proper_name', 'constellation_name', 'magnitude', 'distance',
                     'spectral_class', 'evolution_stage')
-    list_filter = ('proper_name', 'magnitude')
+    list_filter = ('proper_name', 'constellation_name', 'magnitude')
     search_fields = ['proper_name', 'spectral_class']
 
 
