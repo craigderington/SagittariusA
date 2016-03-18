@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+  <h1 class="page-header">Constellation: {{ object.constellation_name }}</h3>
+  <p class="lead">Family: {{ constellation.family }}</p>
+  <p class="lead">Genitive: {{ constellation.genitive }}</p>
+  <p class="lead">Origin: {{ constellation.origin }}</p>
+  <p class="lead">Meaning: {{ constellation.meaning }}</p>
+  <p>Right Ascension: {{ constellation.right_ascension }}</p>
+  <p>Decination: {{ constellation.declination }}</p>
+  <p>Star Count: {{ constellation.number_of_stars }}</p>
+  <p>Stars with Planets: {{ constellation.stars_with_planets }}
+
+  <p>&nbsp;</p>
+
+  <p>
+    {% if user.is_authenticated %}
+      <a href="{% url 'constellation:constellation-update' constellation.pk %}" class="btn btn-primary btn-small"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+      <a href="{% url 'constellation:constellation-delete' constellation.pk %}" class="btn btn-danger btn-small"><i class="glyphicon glyphicon-remove"></i> Delete</a>
+    {% endif %}
+    <a href="{% url 'constellation:constellation-list' %}" class="btn btn-default btn-small"><i class="glyphicon glyphicon-list"></i> Return to List</a>
+  </p>
+
+{% endblock content %}

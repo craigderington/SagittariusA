@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<h1 class="page-header">Stellar Objects</h1>
+
+  {% if user.is_authenticated %}
+  <a style="margin-bottom:10px;" href="{% url 'stellar:stellar-add' %}" class="btn btn-small btn-default pull-right">
+    <i class="glyphicon glyphicon-asterisk"></i> Add Object
+  </a>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Object Name</th>
+        <th>Object Type</th>
+        <th>Constellation</th>
+        <th>Distance</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stellar in object_list %}
+      <tr>
+        <td><a href="{% url 'stellar:stellar-detail' %}">{{ stellar.name }}</a></td>
+        <td>{{ stellar.stellar_object_type }}</td>
+        <td>{{ stellar.constellation }}</td>
+        <td>{{ stellar.distance }}</td>
+        <td>
+            <a href="{% url 'stellar:stellar-detail' stellar.pk %}"><i class="glyphicon glyphicon-check"></i></a>&nbsp;
+            <a href="{% url 'stellar:stellar-update' stellar.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+            <a href="{% url 'stellar:stellar-delete' stellar.pk %}"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="5">No objects in the database.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="5"><small>{{ stellar_count }} records found in the database...</small></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- pagination -->
+  {% if is_paginated %}
+    <div>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><a href="#">&laquo;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+
+            <li style="margin-left:15px;vertical-align:middle;"><small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small></li>
+        </ul>
+    </div>
+  {% endif %}
+  <!-- / end pagination -->
+
+
+
+
+{% endblock content %}

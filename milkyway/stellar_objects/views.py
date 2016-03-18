@@ -12,7 +12,7 @@ from .forms import StellarObjectForm
 class StellarObjectListView(generic.ListView):
     model = StellarObject
     template_name = 'stellar_objects/stellar_objects_list.html'
-    ordering = ['proper_name']
+    ordering = ['name']
     context_object_name = 'stellar'
     paginate_by = 10
 

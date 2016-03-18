@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+
+
+{% block content %}
+<h1 class="page-header">Constellations</h1>
+
+  {% if user.is_authenticated %}
+  <a style="margin-bottom:5px;" href="{% url 'constellation:constellation-add' %}" class="btn btn-small btn-default pull-right">
+    <i class="glyphicon glyphicon-asterisk"></i> Add Constellation
+  </a>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Constellation</th>
+        <th>Genitive</th>
+        <th>Origin</th>
+        <th>Meaning</th>
+        <th>Right Ascension/Declination</th>
+        <th>Star Count</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for constellation in object_list %}
+      <tr>
+        <td><a href="{% url 'constellation:constellation-detail' constellation.pk %}">{{ constellation.constellation_name }}</a></td>
+        <td>{{ constellation.genitive }}</td>
+        <td>{{ constellation.origin }}</td>
+        <td>{{ constellation.meaning }}</td>
+        <td>{{ constellation.right_ascension}} / {{ constellation.declination }}</td>
+        <td>{{ constellation.number_of_stars }}</td>
+        <td>
+            <a href="{% url 'constellation:constellation-detail' constellation.pk %}"><i class="glyphicon glyphicon-check"></i></a>&nbsp;
+            <a href="{% url 'constellation:constellation-update' constellation.pk %}"><i class="glyphicon glyphicon-edit"></i></a>&nbsp;
+            <a href="{% url 'constellation:constellation-delete' constellation.pk %}"><i class="glyphicon glyphicon-remove-sign"></i></a>
+        </td>
+      </tr>
+      {% empty %}
+      <tr>
+        <td colspan="7">No constellations found in database.</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="7"><small>{{ constellation_count }} records found in the database...</small></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- pagination -->
+  {% if is_paginated %}
+    <div>
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+            {% else %}
+              <li class="disabled"><a href="#">&laquo;</a></li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+              <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+            {% endif %}
+
+            <li style="margin-left:15px;vertical-align:middle;"><small>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</small></li>
+        </ul>
+    </div>
+  {% endif %}
+  <!-- / end pagination -->
+
+
+
+
+{% endblock content %}

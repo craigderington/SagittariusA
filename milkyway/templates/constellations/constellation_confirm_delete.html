@@ -4,16 +4,16 @@
 
 
 {% block content %}
-<h3 class="page-header">{{ star.proper_name }}</h3>
+<h3 class="page-header">{{ constellation.constellation_name }}</h3>
 
 <div class="alert alert-warning alert-dismissible" role="alert">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  <strong>Warning!</strong> You are about to delete database record <strong>{{ star.proper_name }}</strong>!  This action can not be undone...
+  <strong>Warning!</strong> You are about to delete database record <strong>{{ constellation.constellation_name }}</strong>!  This action can not be undone...
 </div>
 
-<p>Bayer Designation: {{ star.bayer_designation }}</p>
-<p>Distance: {{ star.distance }} ly</p>
-<p>Spectral Class: {{ star.spectral_class }}</p>
+<p>Family: {{ constellation.family }}</p>
+<p>Genitive: {{ constellation.genitive }}</p>
+<p>Origin: {{ constellation.origin }}</p>
 <p>&nbsp;</p>
 <p>Are you absolutely sure you want to delete this record?</p>
 
