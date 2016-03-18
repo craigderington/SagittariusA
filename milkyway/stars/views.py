@@ -56,4 +56,4 @@ class StarCreateView(generic.CreateView):
 
 class StarDeleteView(generic.DeleteView):
     model = Star
-    success_url = reverse_lazy('star-list')
+    success_url = reverse_lazy('stars:star-list')

@@ -38,7 +38,7 @@ class ConstellationUpdateView(generic.UpdateView):
     form_class = ConstellationForm
 
     def get_success_url(self):
-        return reverse_lazy('constellations:detail', args= (self.object.id,))
+        return reverse_lazy('constellation:constellation-detail', args= (self.object.id,))
 
 
 class ConstellationCreateView(generic.CreateView):
@@ -56,4 +56,4 @@ class ConstellationCreateView(generic.CreateView):
 
 class ConstellationDeleteView(generic.DeleteView):
     model = Constellation
-    success_url = reverse_lazy('constellation-list')
+    success_url = reverse_lazy('constellation:constellation-list')
