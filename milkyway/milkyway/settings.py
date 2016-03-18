@@ -158,8 +158,12 @@ AUTH_PASSWORD_VALIDATORS = [
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # registration redux settings
+REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = False
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/accounts/login/'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
