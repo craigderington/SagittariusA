@@ -1,13 +1,15 @@
+# stellar_objects/forms.py
+
 from django import forms
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
-from stars.models import Star
+from .models import StellarObject
 
-class StarForm(forms.ModelForm):
+class StellarObjectForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(StarForm, self).__init__(*args, **kwargs)
+        super(StellarObjectForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
         self.helper.form_id = 'id-starform'
         self.helper.form_class = 'form-horizontal'
@@ -20,12 +22,11 @@ class StarForm(forms.ModelForm):
                                      style='margin-top:10px;'))
 
     class Meta:
-        model = Star
-        fields = ('proper_name', 'distance', 'bayer_designation',
-                  'spectral_class', 'magnitude', 'evolution_stage',)
+        model = StellarObject
+        fields = ('name', 'distance', 'stellar_object_type', 'constellation',)
 
     def form_valid(self, form):
-        success_url = '/stars/'
+        success_url = '/stellar_objects/'
 
     #TODO def form_invalid(self, form):
         #do this if the form is invalid

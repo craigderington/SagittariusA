@@ -29,8 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
-INSTALLED_APPS = [
+DJANGO_APPS = (
     'suit',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,11 +37,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+)
+
+
+THIRD_PARTY_APPS = (
     'crispy_forms',
     'braces',
-    'stars',
-]
+    'bootstrap3',
+)
 
+LOCAL_APPS = (
+    'stars',
+    'galaxies',
+    'constellations',
+    'stellar_objects',
+)
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+
+# middleware
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,6 +70,7 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'milkyway.urls'
 
+# templates
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -85,6 +100,38 @@ DATABASES = {
     }
 }
 
+# django-suit config
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'SagittariusA*',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+    'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # menu
+    'SEARCH_URL': '/admin/auth/user/',
+    'MENU_ICONS': {
+        'sites': 'icon-leaf',
+        'auth': 'icon-lock',
+        },
+    'MENU_OPEN_FIRST_CHILD': True, # Default True
+    #'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+         'sites',
+         {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group',)},
+         {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group',)},
+         {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+         {'app': 'stars', 'icon':'icon-asterisk', 'models': ('stars',)},
+         {'app': 'galaxies', 'icon':'icon-download-alt', 'models': ('galaxy',)},
+    ),
+
+    # misc
+    'LIST_PER_PAGE': 20
+
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -104,7 +151,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#Crispy forms
+# crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 
