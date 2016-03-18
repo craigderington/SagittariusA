@@ -8,6 +8,8 @@ from django.utils import timezone
 from .models import Constellation
 from .forms import ConstellationForm
 
+from braces.views import LoginRequiredMixin
+
 # Create your views here.
 class ConstellationListView(generic.ListView):
     model = Constellation
@@ -33,7 +35,7 @@ class ConstellationDetailView(generic.DetailView):
         return context
 
 
-class ConstellationUpdateView(generic.UpdateView):
+class ConstellationUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Constellation
     form_class = ConstellationForm
 
@@ -41,7 +43,7 @@ class ConstellationUpdateView(generic.UpdateView):
         return reverse_lazy('constellation:constellation-detail', args= (self.object.id,))
 
 
-class ConstellationCreateView(generic.CreateView):
+class ConstellationCreateView(LoginRequiredMixin, generic.CreateView):
     model = Constellation
     form_class = ConstellationForm
     success_url = '/constellations/'
@@ -54,6 +56,6 @@ class ConstellationCreateView(generic.CreateView):
         return super(ConstellationCreateView, self).form_invalid(form)
 
 
-class ConstellationDeleteView(generic.DeleteView):
+class ConstellationDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Constellation
     success_url = reverse_lazy('constellation:constellation-list')

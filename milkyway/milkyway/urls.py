@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^galaxies/', include('galaxies.urls', namespace='galaxy')),
     url(r'^stellar_objects/', include('stellar_objects.urls', namespace='stellar')),
     url(r'^constellations/', include('constellations.urls', namespace='constellation')),
+    url(r'^accounts/', include('registration.backends.default.urls')),
 ]

@@ -44,6 +44,7 @@ THIRD_PARTY_APPS = (
     'crispy_forms',
     'braces',
     'bootstrap3',
+    'registration',
 )
 
 LOCAL_APPS = (
@@ -156,6 +157,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # crispy forms
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
+# registration redux settings
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = False
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/

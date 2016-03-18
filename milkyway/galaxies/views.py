@@ -8,6 +8,8 @@ from django.utils import timezone
 from galaxies.models import Galaxy
 from .forms import GalaxyForm
 
+from braces.views import LoginRequiredMixin
+
 # Create your views here.
 
 class GalaxyListView(generic.ListView):
@@ -31,7 +33,7 @@ class GalaxyDetailView(generic.DetailView):
         return context
 
 
-class GalaxyCreateView(generic.CreateView):
+class GalaxyCreateView(LoginRequiredMixin, generic.CreateView):
     model = Galaxy
     form_class = GalaxyForm
     success_url = '/galaxies/'
@@ -45,7 +47,7 @@ class GalaxyCreateView(generic.CreateView):
         return super(GalaxyCreateView, self).form_invalid(form)
 
 
-class GalaxyUpdateView(generic.UpdateView):
+class GalaxyUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Galaxy
     form_class = GalaxyForm
 
@@ -53,6 +55,6 @@ class GalaxyUpdateView(generic.UpdateView):
         return reverse_lazy('galaxy:galaxy-detail', args= (self.object.id,))
 
 
-class GalaxyDeleteView(generic.DeleteView):
+class GalaxyDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Galaxy
     success_url = reverse_lazy('galaxy:galaxy-list')

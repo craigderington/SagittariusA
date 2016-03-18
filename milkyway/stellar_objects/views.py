@@ -8,6 +8,8 @@ from django.utils import timezone
 from .models import StellarObject
 from .forms import StellarObjectForm
 
+from braces.views import LoginRequiredMixin
+
 # Create your views here.
 class StellarObjectListView(generic.ListView):
     model = StellarObject
@@ -33,7 +35,7 @@ class StellarObjectDetailView(generic.DetailView):
         return context
 
 
-class StellarObjectUpdateView(generic.UpdateView):
+class StellarObjectUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = StellarObject
     form_class = StellarObjectForm
 
@@ -41,7 +43,7 @@ class StellarObjectUpdateView(generic.UpdateView):
         return reverse_lazy('stellar:stellar-detail', args= (self.object.id,))
 
 
-class StellarObjectCreateView(generic.CreateView):
+class StellarObjectCreateView(LoginRequiredMixin, generic.CreateView):
     model = StellarObject
     form_class = StellarObjectForm
     success_url = '/stellar_objects/'
@@ -54,6 +56,6 @@ class StellarObjectCreateView(generic.CreateView):
         return super(StellarObjectCreateView, self).form_invalid(form)
 
 
-class StellarObjectDeleteView(generic.DeleteView):
+class StellarObjectDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = StellarObject
     success_url = reverse_lazy('stellar:stellar-list')

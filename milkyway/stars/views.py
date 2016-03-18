@@ -8,6 +8,8 @@ from django.utils import timezone
 from .models import Star
 from .forms import StarForm
 
+from braces.views import LoginRequiredMixin
+
 # Create your views here.
 class StarListView(generic.ListView):
     model = Star
@@ -33,7 +35,7 @@ class StarDetailView(generic.DetailView):
         return context
 
 
-class StarUpdateView(generic.UpdateView):
+class StarUpdateView(LoginRequiredMixin, generic.UpdateView):
     model = Star
     form_class = StarForm
 
@@ -41,7 +43,7 @@ class StarUpdateView(generic.UpdateView):
         return reverse_lazy('stars:detail', args= (self.object.id,))
 
 
-class StarCreateView(generic.CreateView):
+class StarCreateView(LoginRequiredMixin, generic.CreateView):
     model = Star
     form_class = StarForm
     success_url = '/stars/'
@@ -54,6 +56,6 @@ class StarCreateView(generic.CreateView):
         return super(StarCreateView, self).form_invalid(form)
 
 
-class StarDeleteView(generic.DeleteView):
+class StarDeleteView(LoginRequiredMixin, generic.DeleteView):
     model = Star
     success_url = reverse_lazy('stars:star-list')
