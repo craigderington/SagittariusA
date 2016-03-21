@@ -1,4 +1,4 @@
-### SagittariusA* | Supermassive Black Hole
+#### SagittariusA*
 
 Sagittarius A* is a bright and very compact astronomical radio source at the center of the Milky Way, near the border of the constellations Sagittarius and Scorpius. It is part of a larger astronomical feature known as Sagittarius A.
 
